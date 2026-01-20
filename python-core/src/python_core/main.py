@@ -1,25 +1,16 @@
 def main():
-    name = "Python"
-    version = 3.12
-    is_fun = True
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    total = 0
 
-    print(name)
-    print(version)
-    print(is_fun)
-
-    print(type(name))
-    print(type(version))
-    print(type(is_fun))
-
-    temperature = 18
-
-    if temperature > 20:
-        print("Fa caldo")
-    elif temperature > 10:
-        print("Temperato")
-    else:
-        print("Fa freddo")
-
+    for n in numbers:
+        if n>5:
+            print(n)
+            total += n
+        else:
+            print("Numero troppo piccolo:", n)
+    
+    print("Total:", total)
+    print("Total type:", type(total))
 
 
 if __name__ == "__main__":
