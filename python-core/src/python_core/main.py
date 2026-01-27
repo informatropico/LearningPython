@@ -1,4 +1,37 @@
+from .person import Person
+from .stats import adults, average_age, index_by_name
+
+
 def main():
+    people = [
+        Person("Anna", 30),
+        Person("Luca", 17),
+        Person("Marco", 22),
+    ]
+
+    adult_people = adults(people)
+
+    for p in adult_people:
+        print(p)
+
+    print("Average adult people age:", average_age(adult_people))
+
+    people_by_name = index_by_name(people)
+    
+    for p in people_by_name.values():
+        print(p)
+
+    print("Anna:", people_by_name["Anna"])
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+'''
+def main():
+
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     threshold = 5
 
@@ -8,6 +41,9 @@ def main():
         {"name": "Marco", "grade": 30},
         {"name": "Simona", "grade": 15},
     ]
+
+    print(type(grades))
+    print(type(grades[0]))
 
     people = [
         {"name": "Anna", "age": 30},
@@ -47,10 +83,40 @@ def main():
     result = average(senior_people_dict.values())
     print("Average age of senior people:", result)
     print("Result type:", type(result))
+    
+    
+    people = [
+        Person("Anna", 30),
+        Person("Luca", 17),
+        Person("Marco", 22),
+    ]
+
+    for p in people:
+        print(p)
+
+    adult_people = [p for p in people if p.is_adult()]
+    for p in adult_people:
+        print(p)
+    print(type(adult_people))
+    
+    
+    adults_ages_by_name = {p.name: p.age for p in adult_people}
+    print(type(adults_ages_by_name))
+    print_dictionary(adults_ages_by_name)
+
+    average_adults_age = average(adults_ages_by_name.values())
+    print("Average age of adult people:", average_adults_age)
+
+    average_age = average([p.age for p in people])
+    print("Average age of people:", average_age)
+
+    index_people_by_name = {
+        p.name: p
+        for p in people
+    }
+    print(index_people_by_name.get("Luca"))
 
     
-
-
 def squared_greater_than(numbers, threshold):
     return [n**2 for n in numbers if n > threshold]
 
@@ -63,7 +129,7 @@ def sum_squared_numbers_grater_than(numbers, threshold):
 def greater_than(numbers, threshold):
     return [n for n in numbers if n > threshold]
 
-'''
+
 In Python:
     - il tipo è una promessa
     - la violazione è una rottura semantica, non tecnica
@@ -76,7 +142,7 @@ def sum_numbers_greater_than(numbers: list[int], threshold: int) -> int:
             total += n
 
     return total
-'''
+
 
 def build_dictionary_from_list(items, key_field, value_field):
     return {
@@ -105,5 +171,17 @@ def average(values):
     count = len(values)
     return total / count if count > 0 else 0.0
 
+class Person:
+    def __init__(self, name: str, age: int):
+        self.name = name
+        self.age = age
+    def is_adult(self) -> bool:
+        return self.age >= 18
+    def __str__(self) -> str:
+        return f"Person(name={self.name}, age={self.age})"
+    def __repr__(self) -> str:
+        return self.__str__()
+
 if __name__ == "__main__":
     main()
+'''
