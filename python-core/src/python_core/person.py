@@ -18,6 +18,9 @@ class Person:
 
     def is_adult(self) -> bool:
         return self.age >= 18
+    
+    def birthday(self) -> None:
+        self.age += 1
 
     def __str__(self) -> str:
         return f"Person(name={self.name}, age={self.age})"
